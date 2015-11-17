@@ -53,3 +53,7 @@ See milestones/issues.
 
 ## Contribute
 We are still working on getting the balance between flexibility and easy-of-use. Input here is valuable to us. Please get in touch and sync with us before committing your time to large PRs at this stage of the project.
+
+## Thanks
+
+Thanks to [Jongleberry](https://github.com/jonathanong) for letting us use the `roc` package name on npm.
