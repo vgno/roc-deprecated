@@ -1,6 +1,6 @@
 # Roc
 ## Modern Application Development Ecosystem
-_Project status is currently: WIP proof of concept_  
+_Project status is currently WIP proof of concept_  
 
 Provides a complete ecosystem for developing modern applications.  
 Sweeps common complexities into easy-to-use packages with extendable APIs.
@@ -20,7 +20,6 @@ Common tasks and boilerplate code does not exist in a Roc application but in ext
 ```
 npm install -g roc
 ```
-Note: packages **not yet made available**. Roc is currently used by another module.
 
 ### Basic web application
 ```
@@ -41,7 +40,7 @@ roc dev
 
 ## Motivation
 Roc was born out of the need to create modern applications following the correct conventions and using best practices consistently.  
-We quickly realized that keeping boilerplate updated within each project over time was unmanagable. It seems natural to have this _repeated complexity managed by separated semantically versioned packages_.
+We quickly realized that keeping boilerplate updated within each project over time was unmanageable. It seems natural to have this _repeated complexity managed by separated semantically versioned packages_.
 
 ## Read the code
 cli: TODO  
@@ -53,4 +52,8 @@ config: TODO
 See milestones/issues.
 
 ## Contribute
-We are still working on getting the balance between flexibility and easy-of-use. Input here is valuable to us. Please get in touch and sync with us before comitting your time to large PRs at this stage of the project.
+We are still working on getting the balance between flexibility and easy-of-use. Input here is valuable to us. Please get in touch and sync with us before committing your time to large PRs at this stage of the project.
+
+## Thanks
+
+Thanks to [Jongleberry](https://github.com/jonathanong) for letting us use the `roc` package name on npm.
