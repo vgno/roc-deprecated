@@ -18,7 +18,7 @@
     "colors": "~1.1.2",
     "commander": "~2.9.0",
     "lodash": "~3.10.1",
-    "roc-config": "1.0.0-alpha",
+    "roc-config": "1.0.0-alpha1",
     "semver": "~5.0.3",
     "source-map-support": "~0.3.2"
   },
