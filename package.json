@@ -23,7 +23,7 @@
     "lodash": "~3.10.1",
     "replace": "~0.3.0",
     "request": "~2.65.0",
-    "roc-config": "1.0.0-alpha1",
+    "roc-config": "*",
     "semver": "~5.0.3",
     "source-map-support": "~0.3.2",
     "tar": "~2.2.1",
