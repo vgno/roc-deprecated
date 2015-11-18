@@ -1,3 +1,5 @@
+import 'source-map-support/register';
+
 export const prompt = [{
     type: 'input',
     name: 'appName',

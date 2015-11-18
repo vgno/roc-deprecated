@@ -1,3 +1,5 @@
+import 'source-map-support/register';
+
 import request from 'request';
 import tar from 'tar';
 import zlib from 'zlib';
