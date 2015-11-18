@@ -7,7 +7,7 @@ import { configManager, setConfig } from './config-manager';
 
 export default function runner(mode) {
     if (!validRocProject()) {
-        process.exit(0);
+        process.exit(1);
     }
 
     const rocExtension = getBaseRocExtension(true);

@@ -37,7 +37,7 @@ program
     .parse(process.argv);
 
 // Make sure the directory is empty!
-isEmptyDir();
+assertEmptyDir();
 
 if (!option) {
     interativeMenu();
@@ -52,8 +52,8 @@ function fetchBase(toFetch, selectVersion) {
     if (toFetch.indexOf('/') === -1) {
         const base = bases.find((elem) => elem.identifier === toFetch);
         if (!base) {
-            console.log('Unvalid name given.');
-            process.exit(0);
+            console.log('Invalid name given.');
+            process.exit(1);
         }
 
         toFetch = base.repo;
@@ -78,14 +78,13 @@ function fetchBase(toFetch, selectVersion) {
 
             return get(toFetch, version);
         })
-        .then(() => {
-            if (!validRocProject()) {
-                del.sync(['*', '.*']);
-                process.exit(0);
+        .then((dirPath) => {
+            if (!validRocProject(dirPath)) {
+                process.exit(1);
             } else {
-                inquirer.prompt(getPrompt(), (answers) => {
-                    replaceTempletedValues(answers);
-                    configureFiles();
+                inquirer.prompt(getPrompt(dirPath), (answers) => {
+                    replaceTemplatedValues(answers, dirPath);
+                    configureFiles(dirPath);
                     npmInstall();
                 });
             }
@@ -93,38 +92,32 @@ function fetchBase(toFetch, selectVersion) {
         .catch((error) => console.log(error));
 }
 
-function getPrompt() {
+function getPrompt(dirPath) {
     try {
-        return require(path.join(process.cwd(), 'roc.setup.js')).prompt;
+        return require(path.join(dirPath, 'roc.setup.js')).prompt;
     } catch (error) {
         return require('../index').prompt;
     }
 }
 
-function replaceTempletedValues(answers) {
+function replaceTemplatedValues(answers, dirPath) {
     Object.keys(answers).map((key) => {
         replace({
             regex: `{{{\\s*${key}*\\s*}}}`,
             replacement: answers[key],
-            paths: ['./base'],
+            paths: [dirPath + '/base'],
             recursive: true,
             silent: true
         });
     });
 }
 
-function configureFiles() {
+function configureFiles(dirPath) {
     // Rename package.json to .roc for history purposes
-    fs.renameSync(path.join(process.cwd(), 'package.json'), path.join(process.cwd(), '.roc'));
-
-    // Remove setup files
-    del.sync(['**', '!base/**', '!.roc'], { dot: true });
+    fs.renameSync(path.join(dirPath, 'package.json'), path.join(dirPath, 'base', '.roc'));
 
     // Move everything inside base to the current working directory
-    fs.copySync(path.join(process.cwd(), 'base'), process.cwd());
-
-    // Remove the base folder since we do not need it anymore
-    del.sync(['base']);
+    fs.copySync(path.join(dirPath, 'base'), process.cwd());
 }
 
 function npmInstall() {
@@ -147,9 +140,9 @@ function interativeMenu() {
     });
 }
 
-function isEmptyDir() {
+function assertEmptyDir() {
     if (fs.readdirSync(process.cwd()).length > 0) {
         console.log('You need to call this command from a empty directory.');
-        process.exit(0);
+        process.exit(1);
     }
 }

@@ -4,10 +4,11 @@ import path from 'path';
 import colors from 'colors/safe';
 import semver from 'semver';
 
-export function getPackageJson() {
+export function getPackageJson(dirPath) {
+    dirPath = dirPath || process.cwd();
     try {
         // If we can't find this we are not in a valid Roc project
-        return require(path.join(process.cwd(), 'package.json')).roc;
+        return require(path.join(dirPath, 'package.json')).roc;
     } catch (e) {
         return null;
     }
@@ -75,6 +76,6 @@ export function getVersion() {
     return require('../../../package.json').version;
 }
 
-export function validRocProject() {
-    return validate(getPackageJson());
+export function validRocProject(dirPath) {
+    return validate(getPackageJson(dirPath));
 }

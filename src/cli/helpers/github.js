@@ -3,6 +3,10 @@ import 'source-map-support/register';
 import request from 'request';
 import tar from 'tar';
 import zlib from 'zlib';
+import temp from 'temp';
+
+// Automatically track and cleanup files at exit
+temp.track();
 
 export function getVersions(packageName) {
     return new Promise((resolve, reject) => {
@@ -27,18 +31,24 @@ export function getVersions(packageName) {
 
 export function get(packageName, version = 'master') {
     return new Promise((resolve, reject) => {
-        /* eslint-disable new-cap */
-        const writeTar = tar.Extract({strip: 1, path: process.cwd()});
-        /* eslint-enable */
+        temp.mkdir('roc', function(err, dirPath) {
+            if (err) {
+                reject(err);
+            }
 
-        writeTar.on('finish', resolve);
+            /* eslint-disable new-cap */
+            const writeTar = tar.Extract({strip: 1, path: dirPath});
+            /* eslint-enable */
 
-        request
-            .get(`http://github.com/${packageName}/tarball/${version}`)
-            .on('error', reject)
-            .pipe(zlib.createGunzip())
-            .on('error', reject)
-            .pipe(writeTar)
-            .on('error', reject);
+            writeTar.on('finish', () => resolve(dirPath));
+
+            request
+                .get(`http://github.com/${packageName}/tarball/${version}`)
+                .on('error', reject)
+                .pipe(zlib.createGunzip())
+                .on('error', reject)
+                .pipe(writeTar)
+                .on('error', reject);
+        });
     });
 }

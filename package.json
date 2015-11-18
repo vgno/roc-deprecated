@@ -27,7 +27,8 @@
     "roc-config": "1.0.0-alpha1",
     "semver": "~5.0.3",
     "source-map-support": "~0.3.2",
-    "tar": "~2.2.1"
+    "tar": "~2.2.1",
+    "temp": "~0.8.3"
   },
   "devDependencies": {
     "babel": "~5.8.34",
