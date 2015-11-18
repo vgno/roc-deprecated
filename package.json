@@ -2,7 +2,8 @@
   "name": "roc",
   "version": "1.0.0-alpha1",
   "description": "CLI for the Roc ecosystem",
-  "bin": "./lib/roc.js",
+  "main": "./lib/index.js",
+  "bin": "./lib/cli/roc.js",
   "preferGlobal": true,
   "scripts": {
     "build": "babel src --out-dir lib --source-maps",
@@ -17,10 +18,16 @@
   "dependencies": {
     "colors": "~1.1.2",
     "commander": "~2.9.0",
+    "del": "~2.1.0",
+    "fs-extra": "~0.26.2",
+    "inquirer": "~0.11.0",
     "lodash": "~3.10.1",
+    "replace": "~0.3.0",
+    "request": "~2.65.0",
     "roc-config": "1.0.0-alpha1",
     "semver": "~5.0.3",
-    "source-map-support": "~0.3.2"
+    "source-map-support": "~0.3.2",
+    "tar": "~2.2.1"
   },
   "devDependencies": {
     "babel": "~5.8.34",

@@ -7,7 +7,7 @@ import isBoolean from 'lodash/lang/isBoolean';
 import colors from 'colors/safe';
 import commander from 'commander';
 
-import { setApplicationConfig, setTemporaryConfig } from 'roc-config';
+import { setApplicationConfigPath, appendConfig } from 'roc-config';
 
 // Creates all configuration options
 function configureOptions(config, meta, availableOptions) {
@@ -100,6 +100,6 @@ export function configManager({ baseConfig, metaConfig }) {
 }
 
 export function setConfig(applicationConfig, temporaryConfig) {
-    setApplicationConfig(applicationConfig && path.join(process.cwd(), applicationConfig));
-    setTemporaryConfig(temporaryConfig);
+    setApplicationConfigPath(applicationConfig && path.join(process.cwd(), applicationConfig));
+    appendConfig(temporaryConfig);
 }

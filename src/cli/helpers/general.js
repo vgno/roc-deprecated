@@ -4,22 +4,20 @@ import path from 'path';
 import colors from 'colors/safe';
 import semver from 'semver';
 
-function getPackageJson() {
+export function getPackageJson() {
     try {
         // If we can't find this we are not in a valid Roc project
-        return require(path.join(process.cwd(), 'package.json'));
+        return require(path.join(process.cwd(), 'package.json')).roc;
     } catch (e) {
-        return { roc: false };
+        return null;
     }
 }
 
-function validate(packageJson) {
-    const requiredRocVersion = packageJson.roc;
-
+function validate(requiredRocVersion) {
     if (!requiredRocVersion) {
         console.log('You are not in a Roc project.');
         console.log('Make sure you are calling this command from the root of a Roc project.\n');
-        process.exit(1);
+        return false;
     }
 
     if (!semver.satisfies(getVersion(), requiredRocVersion)) {
@@ -33,8 +31,10 @@ function validate(packageJson) {
                 ` to at least ${requiredRocVersion}.\n`);
         }
 
-        process.exit(1);
+        return false;
     }
+
+    return true;
 }
 
 function getRocExtensionPath() {
@@ -66,15 +66,15 @@ export function getBaseRocExtension() {
     const rocExtensionPath = getRocExtensionPath();
     const packageJson = require(path.join(rocExtensionPath, 'package.json'));
 
-    validate(packageJson);
+    validate(packageJson.roc);
 
     return require(path.join(rocExtensionPath, packageJson.main));
 }
 
 export function getVersion() {
-    return require('../../package.json').version;
+    return require('../../../package.json').version;
 }
 
-export function validateRocProject() {
-    validate(getPackageJson());
+export function validRocProject() {
+    return validate(getPackageJson());
 }
