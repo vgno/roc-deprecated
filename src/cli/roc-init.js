@@ -5,7 +5,6 @@ import path from 'path';
 import { exec } from 'child_process';
 import program from 'commander';
 import inquirer from 'inquirer';
-import del from 'del';
 import replace from 'replace';
 
 import { get, getVersions } from './helpers/github';
