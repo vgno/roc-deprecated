@@ -1,9 +1,11 @@
 import 'source-map-support/register';
 
-import { validateRocProject, getBaseRocExtension } from './helpers/general';
+import { validRocProject, getBaseRocExtension } from './helpers/general';
 import { configManager, setConfig } from './helpers/config-manager';
 
-validateRocProject();
+if (!validRocProject()) {
+    process.exit(1);
+}
 
 const rocExtension = getBaseRocExtension(true);
 
