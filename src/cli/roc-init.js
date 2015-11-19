@@ -2,7 +2,7 @@ import 'source-map-support/register';
 
 import fs from 'fs-extra';
 import path from 'path';
-import { exec } from 'child_process';
+import { spawn } from 'child_process';
 import program from 'commander';
 import inquirer from 'inquirer';
 import replace from 'replace';
@@ -121,9 +121,13 @@ function configureFiles(dirPath) {
 
 function npmInstall() {
     // Run npm install
-    const npm = exec('npm install');
-    npm.stderr.pipe(process.stderr);
-    npm.stdout.pipe(process.stdout);
+    spawn('npm', ['install'], {
+        stdio: [
+            process.stdin,
+            process.stdout,
+            process.stderr
+        ]
+    });
 }
 
 function interativeMenu() {
