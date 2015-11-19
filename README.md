@@ -36,7 +36,7 @@ roc dev
 ```
 
 `roc help` will provide available actions.  
-`dev` starts the application locally in development mode with hot code reloading and Browersync.   View your application at http://localhost:3002
+`dev` starts the application locally in development mode with hot code reloading and Browersync. View your application at http://localhost:3002
 
 ## Motivation
 Roc was born out of the need to create modern applications following the correct conventions and using best practices consistently.  

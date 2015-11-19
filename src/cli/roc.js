@@ -10,6 +10,8 @@ import { getVersion } from './helpers/general';
 program
     .version(getVersion())
 
+    .command('init [base] [version]', 'init a new project')
+
     .command('build [options] [config]', 'build the current project')
     .command('dev [options] [config]', 'start the current project in dev mode')
     .command('start [options] [config]', 'start the current project')

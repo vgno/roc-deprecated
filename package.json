@@ -1,12 +1,13 @@
 {
   "name": "roc",
-  "version": "1.0.0-alpha1",
+  "version": "1.0.0-alpha3",
   "description": "CLI for the Roc ecosystem",
-  "bin": "./lib/roc.js",
+  "main": "./lib/index.js",
+  "bin": "./lib/cli/roc.js",
   "preferGlobal": true,
   "scripts": {
     "build": "babel src --out-dir lib --source-maps",
-    "clean": "rimraf lib",
+    "clean": "rimraf lib docs",
     "test": "npm run lint",
     "lint": "eslint .",
     "check": "ncu",
@@ -17,10 +18,16 @@
   "dependencies": {
     "colors": "~1.1.2",
     "commander": "~2.9.0",
+    "fs-extra": "~0.26.2",
+    "inquirer": "~0.11.0",
     "lodash": "~3.10.1",
-    "roc-config": "1.0.0-alpha1",
+    "replace": "~0.3.0",
+    "request": "~2.65.0",
+    "roc-config": "*",
     "semver": "~5.0.3",
-    "source-map-support": "~0.3.2"
+    "source-map-support": "~0.3.2",
+    "tar": "~2.2.1",
+    "temp": "~0.8.3"
   },
   "devDependencies": {
     "babel": "~5.8.34",
@@ -34,6 +41,9 @@
     "type": "git",
     "url": "https://github.com/vgno/roc.git"
   },
+  "files": [
+    "lib"
+  ],
   "keywords": [
     "roc"
   ]
