@@ -83,7 +83,7 @@ export function configManager({ baseConfig, metaConfig }) {
     const availableOptions = [];
     let applicationConfig;
 
-    configureOptions(baseConfig, metaConfig, availableOptions)
+    configureOptions(baseConfig, metaConfig.descriptions, availableOptions)
         .arguments('[config]')
         .action((config) => {
             applicationConfig = config;
