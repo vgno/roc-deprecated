@@ -1,5 +1,7 @@
-# Roc
-![stability alpha](https://img.shields.io/badge/stability-alpha-red.svg)  
+# Roc - CLI for the Roc ecosystem
+![stability alpha](https://img.shields.io/badge/stability-alpha-red.svg)
+[![roc](https://img.shields.io/npm/v/roc.svg)](https://www.npmjs.com/package/roc)
+
 _Project status is currently work in progress and proof of concept_  
 We have started to implement the first few products based on Roc. These products are not yet in production. You have been warned!
 
@@ -12,10 +14,10 @@ Composes some great open source tools and make them easy to use with a streamlin
 Direct your focus to _writing great software_ and away from juggling boilerplate and dependencies. Roc is built on top of the Node.js ecosystem.
 
 ### Example of tasks handled by extensions
-- Building and bundling through Webpack
-- Web server through Koa
-- React (complete with Redux and server side rendering)
-- First class developer experience featuring hot code reloading and BrowserSync
+- Building and bundling through [Webpack](http://webpack.github.io/)
+- Web server through [Koa](http://koajs.com/)
+- [React](http://facebook.github.io/react/) (complete with [Redux](https://github.com/rackt/redux) and server side rendering)
+- First class developer experience featuring hot code reloading and [Browsersync](http://browsersync.io)
 
 Common tasks and boilerplate code does not exist in a Roc application but in extensions installed with `npm` making it easier to maintain and update. Roc extensions are opinionated by design.
 
@@ -83,11 +85,13 @@ View your application at http://localhost:3002 using default configuration.
 Roc was born out of the need to create modern applications following the correct conventions and using best practices consistently.  
 We quickly realized that keeping boilerplate updated within each project over time was unmanageable. It seems natural to have this _repeated complexity managed by separated semantically versioned packages_.
 
-## Read the code
-command line interface (cli): [here]("https://github.com/vgno/roc")  
-web: https://github.com/vgno/roc-web  
-web-react: https://github.com/vgno/roc-web-react  
-config: https://github.com/vgno/roc-config
+## Eco system
+| Project | Github page |
+----------|--------------
+| CLI (this project) | https://github.com/vgno/roc |
+| Roc Config | https://github.com/vgno/roc-config |
+| Roc Web | https://github.com/vgno/roc-web |
+| Roc Web React | https://github.com/vgno/roc-web-react |
 
 ## Roadmap
 See milestones/issues.
