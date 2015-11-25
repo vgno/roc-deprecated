@@ -48,7 +48,7 @@ Build and start the application in development mode
 roc dev
 ```
 
-`roc init web-react` uses the starting point [roc-base-web-react]("https://github.com/vgno/roc-base-web") from Github  
+`roc init web-react` uses the starting point [roc-base-web-react](https://github.com/vgno/roc-base-web) from Github  
 
 Suitable for more ambitious web-applications that prefer **React** views, **universal rendering** and established library **Redux** for unidirectional dataflow.  
 
@@ -69,7 +69,7 @@ Build and start the application in development mode
 roc dev
 ```
 
-`roc init web` uses the starting point [roc-base-web]("https://github.com/vgno/roc-base-web") from Github  
+`roc init web` uses the starting point [roc-base-web](https://github.com/vgno/roc-base-web) from Github  
 
 Suitable for serving static files and rendering `html` with basic `javascript` on the client.  
 
@@ -77,7 +77,7 @@ Suitable for serving static files and rendering `html` with basic `javascript` o
 `roc help` will print available actions.  
 `roc dev` starts the application locally in development mode with _hot code reloading_ and _Browersync_.  
 `roc dev --help` will list all **options available to your current extension**.  
-Be sure to read through this as minor adjustments to your `roc.config.js` is a very common use-case. Also check out defaults for [web]("https://github.com/vgno/roc-web/blob/master/src/roc/config/roc.config.js") and [web-react]("https://github.com/vgno/roc-web-react/blob/master/src/roc/config/roc.config.js")  
+Be sure to read through this as minor adjustments to your `roc.config.js` is a very common use-case. Also check out defaults for [web](https://github.com/vgno/roc-web/blob/master/src/roc/config/roc.config.js) and [web-react](https://github.com/vgno/roc-web-react/blob/master/src/roc/config/roc.config.js)  
 
 View your application at http://localhost:3002 using default configuration.
 
