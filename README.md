@@ -1,5 +1,5 @@
 # Roc
-![stability alpha]("https://img.shields.io/badge/stability-alpha-red.svg")  
+![stability alpha](https://img.shields.io/badge/stability-alpha-red.svg)  
 _Project status is currently work in progress and proof of concept_  
 We have started to implement the first few products based on Roc. These products are not yet in production. You have been warned!
 
