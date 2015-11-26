@@ -7,8 +7,12 @@
   "preferGlobal": true,
   "scripts": {
     "build": "babel src --out-dir lib --source-maps",
-    "clean": "rimraf lib docs",
-    "test": "npm run lint",
+    "build:watch": "npm run build -- --watch",
+    "clean": "rimraf lib docs coverage",
+    "test": "npm run lint && npm run test:coverage",
+    "test:unit": "mocha --compilers js:babel/register test/",
+    "test:unit:watch": "mocha --watch --compilers js:babel/register test/",
+    "test:coverage": "isparta cover _mocha -- --compilers js:babel/register",
     "lint": "eslint .",
     "check": "ncu",
     "prepublish": "npm test && npm run clean && npm run build"
@@ -32,8 +36,13 @@
   "devDependencies": {
     "babel": "~5.8.34",
     "babel-eslint": "~4.1.1",
+    "chai": "~3.4.1",
+    "codeclimate-test-reporter": "~0.1.1",
+    "coveralls": "~2.11.4",
     "eslint": "~1.9.0",
     "eslint-config-vgno": "~5.0.0",
+    "isparta": "~3.5.3",
+    "mocha": "~2.3.4",
     "npm-check-updates": "~2.4.2",
     "rimraf": "~2.4.3"
   },
