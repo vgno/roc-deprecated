@@ -1,5 +1,5 @@
 # Roc - CLI for the Roc ecosystem
-![build status](https://travis-ci.org/vgno/roc.svg)
+[![build status](https://travis-ci.org/vgno/roc.svg)](https://travis-ci.org/vgno/roc)
 ![stability alpha](https://img.shields.io/badge/stability-alpha-red.svg)
 [![roc](https://img.shields.io/npm/v/roc.svg)](https://www.npmjs.com/package/roc)
 
