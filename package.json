@@ -8,7 +8,7 @@
   "scripts": {
     "build": "babel src --out-dir lib --source-maps",
     "build:watch": "npm run build -- --watch",
-    "clean": "rimraf lib docs",
+    "clean": "rimraf lib docs coverage",
     "test": "npm run lint && npm run test:coverage",
     "test:unit": "mocha --compilers js:babel/register test/",
     "test:unit:watch": "mocha --watch --compilers js:babel/register test/",
