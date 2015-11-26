@@ -1,6 +1,14 @@
 language: node_js
 node_js:
-    - "stable"
+    - stable
+    - 4.2
+deploy:
+    provider: npm
+    email: arsovik@gmail.com
+    api_key:
+        secure: KF70aEUUnfXFAtQJzef9oGXyAK4ZLB6Wschw8d6GvomAAo/e3D1fXDAXPHUlzN9exxQzNejN2e2uRLKlsE7QpsKtScl6hAbDKKQc1nM8VFndzo+qKVoaLxK4bYC3jHMLXUyhWTkJD36fNFEvNwBa9eByNIW2izaqJfssJPXJdWX2y/mQgrfUnW9XLmOOEXn1oUMg6h3C6cjaBpWXy+edqz8GMpk8JzQdugCk+MNycnMyb4fkOBlfeRvS469vAL7CSkE4M/Z+B352ruMYOXimCAh6hTynTnr4DnRCfpq9fmw55WQruZFTXcXg4pcmy/PHaFK+4ATy/lSxWk9xIWCBZNUTXRCFPswxNyakNJPzttl629I7ZP2RbnG0yoBT94CGTbwGCgjbLE2TbOUACaATzP4dk4Rqu19Eptr9rD5dD8d3jisgszle9NsnZLL7ckNhprCzwZ9iNBdAO/zVMwHESS8ld1ZgqyVQLW7GbEAdDdDhsgUDa0Ufkv9hqvvbKwGNzWsvDyl82cId38mjOk117LsuokL4NhKXw8GQgSu+AUmQQ3eJP1lndCHZvAYhkduiIBdZBSAXUeN90vvqeXQowndp/upALyFEmfsMx4q4bF9yhKiJxrk+/hyJBpTz82JevJe3yjKQ3h+5ML+c63C9vc5CtV8ZoyEEOA2s0WjZ2O0=
+    on:
+        tags: true
 addons:
     code_climate:
         repo_token: d1e447f124e6555b3b74e24afa976281f887051b19549ba16fb0563e0df73dc1
