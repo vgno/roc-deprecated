@@ -38,6 +38,7 @@
     "babel-eslint": "~4.1.1",
     "chai": "~3.4.1",
     "codeclimate-test-reporter": "~0.1.1",
+    "coveralls": "~2.11.4",
     "eslint": "~1.9.0",
     "eslint-config-vgno": "~5.0.0",
     "isparta": "~3.5.3",

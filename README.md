@@ -2,8 +2,8 @@
 ![stability alpha](https://img.shields.io/badge/stability-alpha-red.svg)
 [![roc](https://img.shields.io/npm/v/roc.svg)](https://www.npmjs.com/package/roc)
 [![build status](https://travis-ci.org/vgno/roc.svg)](https://travis-ci.org/vgno/roc)
+[![Coverage Status](https://coveralls.io/repos/vgno/roc/badge.svg?branch=master&service=github)](https://coveralls.io/github/vgno/roc?branch=master)
 [![Code Climate](https://codeclimate.com/github/vgno/roc/badges/gpa.svg)](https://codeclimate.com/github/vgno/roc)
-[![Test Coverage](https://codeclimate.com/github/vgno/roc/badges/coverage.svg)](https://codeclimate.com/github/vgno/roc/coverage)
 [![Issue Count](https://codeclimate.com/github/vgno/roc/badges/issue_count.svg)](https://codeclimate.com/github/vgno/roc)
 
 _Project status is currently work in progress and proof of concept_  
