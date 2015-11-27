@@ -21,6 +21,11 @@ function validate(requiredRocVersion) {
         return false;
     }
 
+    // if product requires an alpha version of cli an exact version match is not needed
+    if (requiredRocVersion.indexOf('-alpha') > -1) {
+        return true;
+    }
+
     if (!semver.satisfies(getVersion(), requiredRocVersion)) {
         const state = semver.ltr(getVersion(), requiredRocVersion) ? 'newer' : 'older';
         console.log(`Your Roc application has a dependency on a ${state} version of the Roc CLI.`);
