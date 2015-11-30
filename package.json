@@ -10,9 +10,9 @@
     "build:watch": "npm run build -- --watch",
     "clean": "rimraf lib docs coverage",
     "test": "npm run lint && npm run test:coverage",
-    "test:unit": "mocha --compilers js:babel/register test/",
-    "test:unit:watch": "mocha --watch --compilers js:babel/register test/",
-    "test:coverage": "isparta cover _mocha -- --compilers js:babel/register",
+    "test:unit": "mocha --compilers js:babel/register --recursive test/",
+    "test:unit:watch": "mocha --watch --compilers js:babel/register --recursive test/",
+    "test:coverage": "babel-node ./node_modules/.bin/isparta cover _mocha -- --recursive test/",
     "lint": "eslint .",
     "check": "ncu",
     "prepublish": "npm test && npm run clean && npm run build"
@@ -45,7 +45,9 @@
     "isparta": "~3.5.3",
     "mocha": "~2.3.4",
     "npm-check-updates": "~2.4.2",
-    "rimraf": "~2.4.3"
+    "rimraf": "~2.4.3",
+    "sinon": "~1.17.2",
+    "sinon-chai": "~2.8.0"
   },
   "repository": {
     "type": "git",
