@@ -7,29 +7,47 @@ chai.use(sinonChai);
 describe('helpers', () => {
     describe('github', () => {
         const github = require('../../../src/cli/helpers/github');
+        let get, mkdir;
+
+        beforeEach(() => {
+            get = sinon.stub(require('request'), 'get');
+            mkdir = sinon.stub(require('temp'), 'mkdir');
+        });
+
+        afterEach(() => {
+            get.restore();
+            mkdir.restore();
+        });
 
         describe('getVersions', () => {
             it('must return promise', () => {
-                const get = sinon.stub(require('request'), 'get');
                 const result = github.getVersions();
                 result.should.be.a('Promise');
-                get.restore();
+            });
+
+            it('must reject promise upon request error', (done) => {
+                const requestError = new Error('Request failed');
+                // force get to call callback with error
+                get.callsArgWith(1, requestError);
+
+                github
+                    .getVersions('roc')
+                    .catch((err) => {
+                        err.should.be.equal(requestError);
+                        done();
+                    });
             });
         });
 
         describe('get', () => {
             it('must return promise', () => {
-                const mkdir = sinon.stub(require('temp'), 'mkdir');
                 const result = github.get();
                 result.should.be.a('Promise');
-                mkdir.restore();
             });
 
             it('must make temporary directory "roc"', () => {
-                const mkdir = sinon.spy(require('temp'), 'mkdir');
                 github.get();
                 mkdir.should.have.been.calledWith('roc');
-                mkdir.restore();
             });
         });
     });
