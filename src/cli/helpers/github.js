@@ -10,7 +10,7 @@ temp.track();
 
 export function getVersions(packageName) {
     return new Promise((resolve, reject) => {
-        request({
+        request.get({
             url: `https://api.github.com/repos/${packageName}/tags`,
             headers: {
                 'User-Agent': 'request'
