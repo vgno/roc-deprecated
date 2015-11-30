@@ -18,18 +18,20 @@ function configureOptions(config, meta, availableOptions) {
         let program = commander;
 
         Object.keys(toOptions).map((key) => {
-            const param = parentName ? `${parentName}${capitalizeFirstLetter(key)}` : key;
+            const param = parentName ? `${parentName}-${key}` : key;
+            const commanderParam = parentName ? `${parentName}${capitalizeFirstLetter(key)}` : key;
+
             const objectPath = parentPath ? `${parentPath}.${key}` : key;
 
-            if (isPlainObject(toOptions[key])) {
+            if (isPlainObject(toOptions[key]) && Object.keys(toOptions[key]).length > 0) {
                 return createOptions(toOptions[key], toMetaOptions[key], param, objectPath);
             }
 
-            availableOptions.push({key: param, objectPath });
+            availableOptions.push({key: commanderParam, objectPath });
 
             let description = toMetaOptions[key] ? `${toMetaOptions[key]}. ` : '';
 
-            let defaultDescription = `Default is ${colors.cyan(toOptions[key])}`;
+            let defaultDescription = `Default is ${colors.cyan(JSON.stringify(toOptions[key]))}`;
 
             let converter = () => (input) => input;
             if (isBoolean(toOptions[key])) {
@@ -47,13 +49,29 @@ function configureOptions(config, meta, availableOptions) {
                 if (!toOptions[key].length) {
                     defaultDescription = colors.yellow('No default value');
                 }
-                converter = () => (input) => input.split(',');
+                converter = () => (input) => {
+                    let parsed;
+                    try {
+                        parsed = JSON.parse(input);
+                    } catch (err) {
+                        // Ignore this case
+                    }
+
+                    if (Array.isArray(parsed)) {
+                        return parsed;
+                    }
+
+                    return input.split(',');
+                };
             } else if (Number.isInteger(toOptions[key])) {
                 converter = () => (input) => parseInt(input, 10);
             } else if (typeof (toOptions[key]) === 'string') {
                 if (!toOptions[key]) {
                     defaultDescription = colors.yellow('No default value, you might want to override this');
                 }
+            } else if (!toOptions[key] || Object.keys(toOptions[key]).length === 0) {
+                defaultDescription = colors.yellow('No default value');
+                converter = () => (input) => JSON.parse(input);
             }
 
             program = program.option(`--${param} <option>`, `${description}${defaultDescription}`,
