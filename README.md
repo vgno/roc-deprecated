@@ -43,7 +43,7 @@ npm install -g roc
 
 This provides you with a really simple command line interface. Only Linux and OS X _currently_ supported.
 
-### Awesome Redux + React application
+### Bootstrap Redux + React application
 Create application directory. Name it whatever you like. We used react-app.
 
 ```
@@ -64,7 +64,7 @@ roc dev
 Suitable for more ambitious web-applications that prefer **React** views, **universal rendering** and established library **Redux** for unidirectional dataflow.  
 
 
-### Basic web application
+### Bootstrap basic web application
 Create application directory. Name it whatever you like. We used basic.
 
 ```
