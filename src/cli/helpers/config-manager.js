@@ -14,17 +14,17 @@ function configureOptions(config, meta, availableOptions) {
     const capitalizeFirstLetter = (text) => text.charAt(0).toUpperCase() + text.slice(1);
 
     // Recursive function that builds all the configuration options
-    const createOptions = (toOptions, toMetaOptions = {}, parentName = '', parentPath = '') => {
+    const createOptions = (toOptions, toMetaOptions = {}, parentName = '', parentPath = '', parentCommander = '') => {
         let program = commander;
 
         Object.keys(toOptions).map((key) => {
             const param = parentName ? `${parentName}-${key}` : key;
-            const commanderParam = parentName ? `${parentName}${capitalizeFirstLetter(key)}` : key;
+            const commanderParam = parentName ? `${parentCommander}${capitalizeFirstLetter(key)}` : key;
 
             const objectPath = parentPath ? `${parentPath}.${key}` : key;
 
             if (isPlainObject(toOptions[key]) && Object.keys(toOptions[key]).length > 0) {
-                return createOptions(toOptions[key], toMetaOptions[key], param, objectPath);
+                return createOptions(toOptions[key], toMetaOptions[key], param, objectPath, commanderParam);
             }
 
             availableOptions.push({key: commanderParam, objectPath });
