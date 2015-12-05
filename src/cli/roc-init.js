@@ -13,23 +13,23 @@ import { validRocProject } from './helpers/general';
 
 /* This should be fetched from a server!
  */
-const bases = [{
+const templates = [{
     name: 'Simple Roc App',
     description: 'A simple start on a generic web application',
     identifier: 'web',
-    repo: 'vgno/roc-base-web'
+    repo: 'vgno/roc-template-web'
 }, {
     name: 'Simple Roc React App',
     description: 'A simple start on a React web application',
     identifier: 'web-react',
-    repo: 'vgno/roc-base-web-react'
+    repo: 'vgno/roc-template-web-react'
 }];
 
 let option;
 let versionOption;
 
 program
-    .arguments('[base] [version]')
+    .arguments('[template] [version]')
     .action((argumentOption, version) => {
         option = argumentOption;
         versionOption = version;
@@ -42,21 +42,21 @@ assertEmptyDir();
 if (!option) {
     interativeMenu();
 } else {
-    fetchBase(option, versionOption);
+    fetchTemplate(option, versionOption);
 }
 
 /*
  * Helpers
  */
-function fetchBase(toFetch, selectVersion) {
+function fetchTemplate(toFetch, selectVersion) {
     if (toFetch.indexOf('/') === -1) {
-        const base = bases.find((elem) => elem.identifier === toFetch);
-        if (!base) {
+        const template = templates.find((elem) => elem.identifier === toFetch);
+        if (!template) {
             console.log('Invalid name given.');
             process.exit(1);
         }
 
-        toFetch = base.repo;
+        toFetch = template.repo;
     }
 
     getVersions(toFetch)
@@ -82,13 +82,13 @@ function fetchBase(toFetch, selectVersion) {
             if (!validRocProject(dirPath)) {
                 process.exit(1);
             } else {
-                console.log('\nInstalling base setup dependencies…');
+                console.log('\nInstalling template setup dependencies…');
                 return npmInstall(dirPath).then(() => {
                     inquirer.prompt(getPrompt(dirPath), (answers) => {
                         replaceTemplatedValues(answers, dirPath);
                         configureFiles(dirPath);
 
-                        console.log(`\nInstalling base dependencies… ` +
+                        console.log(`\nInstalling template dependencies… ` +
                             `${colors.dim('(If this fails you can always try to run npm install directly)')}`);
                         return npmInstall().then(() => {
                             console.log(colors.green('\nSetup completed!\n'));
@@ -118,7 +118,7 @@ function replaceTemplatedValues(answers, dirPath) {
         replace({
             regex: `{{{\\s*${key}*\\s*}}}`,
             replacement: answers[key],
-            paths: [dirPath + '/base'],
+            paths: [dirPath + '/template'],
             recursive: true,
             silent: true
         });
@@ -127,10 +127,10 @@ function replaceTemplatedValues(answers, dirPath) {
 
 function configureFiles(dirPath) {
     // Rename package.json to .roc for history purposes
-    fs.renameSync(path.join(dirPath, 'package.json'), path.join(dirPath, 'base', '.roc'));
+    fs.renameSync(path.join(dirPath, 'package.json'), path.join(dirPath, 'template', '.roc'));
 
-    // Move everything inside base to the current working directory
-    fs.copySync(path.join(dirPath, 'base'), process.cwd());
+    // Move everything inside template to the current working directory
+    fs.copySync(path.join(dirPath, 'template'), process.cwd());
 }
 
 function npmInstall(dirPath) {
@@ -157,7 +157,7 @@ function npmInstall(dirPath) {
 }
 
 function interativeMenu() {
-    const choices = bases.map((elem) => ({ name: elem.name, value: elem.identifier }));
+    const choices = templates.map((elem) => ({ name: elem.name, value: elem.identifier }));
 
     inquirer.prompt([{
         type: 'rawlist',
@@ -165,7 +165,7 @@ function interativeMenu() {
         message: 'Selected a type',
         choices: choices
     }], answers => {
-        fetchBase(answers.option);
+        fetchTemplate(answers.option);
     });
 }
 
