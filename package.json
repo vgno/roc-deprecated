@@ -1,6 +1,6 @@
 {
   "name": "roc",
-  "version": "1.0.0-alpha9",
+  "version": "1.0.0-alpha10",
   "description": "CLI for the Roc ecosystem",
   "main": "./lib/index.js",
   "bin": "./lib/cli/roc.js",
