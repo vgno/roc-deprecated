@@ -59,7 +59,7 @@ Build and start the application in development mode
 roc dev
 ```
 
-`roc init web-react` uses the starting point [roc-base-web-react](https://github.com/vgno/roc-base-web-react) from Github  
+`roc init web-react` uses the starting point [roc-template-web-react](https://github.com/vgno/roc-template-web-react) from Github  
 
 Suitable for more ambitious web-applications that prefer **React** views, **universal rendering** and established library **Redux** for unidirectional dataflow.  
 
@@ -80,7 +80,7 @@ Build and start the application in development mode
 roc dev
 ```
 
-`roc init web` uses the starting point [roc-base-web](https://github.com/vgno/roc-base-web) from Github  
+`roc init web` uses the starting point [roc-template-web](https://github.com/vgno/roc-template-web) from Github  
 
 Suitable for serving static files and rendering `html` with basic `javascript` on the client.  
 
