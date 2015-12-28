@@ -1,5 +1,6 @@
 # Roc - CLI for the Roc ecosystem
-Develop modern web applications and components without the boilerplate fragmentation.
+Develop modern web applications and components without the boilerplate fragmentation.  
+[www.getroc.org](http://www.getroc.org)
 
 ![stability alpha](https://img.shields.io/badge/stability-alpha-red.svg)
 [![roc](https://img.shields.io/npm/v/roc.svg)](https://www.npmjs.com/package/roc)
